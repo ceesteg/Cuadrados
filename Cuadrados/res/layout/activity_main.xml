@@ -16,8 +16,8 @@
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="45"
-        android:layout_height="45"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_alignLeft="@+id/button3"
         android:layout_centerVertical="true"
         android:background="@drawable/1360622537_package_system"
@@ -25,8 +25,8 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="45"
-        android:layout_height="45"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_alignLeft="@+id/button1"
         android:layout_below="@+id/button4"
         android:background="@drawable/1360622600_speaker_yellow"
@@ -34,8 +34,8 @@
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="45"
-        android:layout_height="45"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/button3"
         android:layout_marginLeft="31dp"
@@ -43,21 +43,21 @@
         android:text=" " />
 
     <Button
-        android:id="@+id/button5"
-        android:layout_width="110"
-        android:layout_height="110"
-        android:layout_alignTop="@+id/button4"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/1360622436_gtk-media-play-ltr"
-        android:text=" " />
-
-    <Button
         android:id="@+id/button2"
-        android:layout_width="40"
-        android:layout_height="40"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_alignBottom="@+id/button1"
         android:layout_toRightOf="@+id/imageView1"
         android:background="@drawable/1360705137_onebit_33"
+        android:text=" " />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_alignTop="@+id/button4"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/1360622436_gtk-media-play-ltr"
         android:text=" " />
     
 </RelativeLayout>
