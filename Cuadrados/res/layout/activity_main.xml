@@ -12,7 +12,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:src="@drawable/cooltext916952484" />
+        android:src="@drawable/cabeceranombre" />
 
     <Button
         android:id="@+id/button4"
@@ -20,7 +20,7 @@
         android:layout_height="45dp"
         android:layout_alignLeft="@+id/button3"
         android:layout_centerVertical="true"
-        android:background="@drawable/1360622537_package_system"
+        android:background="@drawable/configuracion"
         android:text=" " />
 
     <Button
@@ -29,7 +29,7 @@
         android:layout_height="45dp"
         android:layout_alignLeft="@+id/button1"
         android:layout_below="@+id/button4"
-        android:background="@drawable/1360622600_speaker_yellow"
+        android:background="@drawable/consonido"
         android:text=" " />
 
     <Button
@@ -48,7 +48,7 @@
         android:layout_height="40dp"
         android:layout_alignBottom="@+id/button1"
         android:layout_toRightOf="@+id/imageView1"
-        android:background="@drawable/1360705137_onebit_33"
+        android:background="@drawable/salir"
         android:text=" " />
 
     <Button
@@ -57,7 +57,7 @@
         android:layout_height="110dp"
         android:layout_alignTop="@+id/button4"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/1360622436_gtk-media-play-ltr"
+        android:background="@drawable/play"
         android:text=" " />
     
 </RelativeLayout>
