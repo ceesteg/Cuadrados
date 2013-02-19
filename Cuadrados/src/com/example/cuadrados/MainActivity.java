@@ -9,8 +9,6 @@ import android.widget.Button;
 
 public class MainActivity extends Activity {
 	
-	private boolean sound = true;
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
@@ -26,18 +24,20 @@ public class MainActivity extends Activity {
 				finish();
 			}
 		});
-		
 		Button btSound = (Button)findViewById(R.id.button3);
 		btSound.setOnClickListener(new View.OnClickListener() {
 		    @Override
 		    public void onClick(View v) {
 		        // TODO Auto-generated method stub
+		    	Cuadrados application = (Cuadrados)getApplicationContext();
 		        Button bt = (Button)findViewById(R.id.button3);
-		        if(bt.getBackground().equals(R.drawable.consonido)){
-			        bt.setBackgroundResource(R.drawable.sinsonido);
-		        } else{
-		        	bt.setBackgroundResource(R.drawable.consonido);
-		        }
+				if(application.sound()){
+					bt.setBackgroundResource(R.drawable.sinsonido);
+					application.setSound(false);
+				} else{
+				    bt.setBackgroundResource(R.drawable.consonido);
+				    application.setSound(true);
+				}
 		    }
 		});
 	}
