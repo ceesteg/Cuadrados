@@ -1,10 +1,11 @@
 package com.example.cuadrados;
 
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
@@ -14,10 +15,19 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE); 
+		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
+		WindowManager.LayoutParams.FLAG_FULLSCREEN); 
 		setContentView(R.layout.activity_main);
 		
 		Cuadrados application = (Cuadrados)getApplicationContext();
-		application.startSound(R.raw.sonidofondo);
+		Button btSound = (Button)findViewById(R.id.button3);
+		if(application.soundImg()){
+			application.startSound(R.raw.sonidofondo);
+			btSound.setBackgroundResource(R.drawable.consonido);
+		}else{
+			btSound.setBackgroundResource(R.drawable.sinsonido);
+		}
 		
 		Button btExit = (Button)findViewById(R.id.button2);
 		btExit.setOnClickListener(new View.OnClickListener() {
@@ -28,7 +38,6 @@ public class MainActivity extends Activity {
 				finish();
 			}
 		});
-		Button btSound = (Button)findViewById(R.id.button3);
 		btSound.setOnClickListener(new View.OnClickListener() {
 		    @Override
 		    public void onClick(View v) {
@@ -58,7 +67,7 @@ public class MainActivity extends Activity {
 	@Override
 	public void onStop(){
 		Cuadrados application = (Cuadrados)getApplicationContext();
-		application.stopSound();
+		application.pauseSound();
 		super.onStop();
 	}
 
