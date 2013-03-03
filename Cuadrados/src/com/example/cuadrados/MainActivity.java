@@ -21,7 +21,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		Cuadrados application = (Cuadrados)getApplicationContext();
-		Button btSound = (Button)findViewById(R.id.button3);
+		Button btSound = (Button)findViewById(R.id.botonsonido);
 		if(application.soundImg()){
 			application.startSound(R.raw.sonidofondo);
 			btSound.setBackgroundResource(R.drawable.consonido);
@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
 			btSound.setBackgroundResource(R.drawable.sinsonido);
 		}
 		
-		Button btExit = (Button)findViewById(R.id.button2);
+		Button btExit = (Button)findViewById(R.id.botonsalir);
 		btExit.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
 		    public void onClick(View v) {
 		        // TODO Auto-generated method stub
 		    	Cuadrados application = (Cuadrados)getApplicationContext();
-		        Button bt = (Button)findViewById(R.id.button3);
+		        Button bt = (Button)findViewById(R.id.botonsonido);
 				if(application.soundImg()){
 					application.pauseSound();
 					bt.setBackgroundResource(R.drawable.sinsonido);
