@@ -82,20 +82,29 @@ public class MainActivity extends Activity {
 		
 		Display display = getWindowManager().getDefaultDisplay();
 		int width = (int) (display.getWidth());
-		int heigh = (int) (display.getHeight());
-		int sizeBtGeneral = width*15/100;
-		int sizeBtPlay = width*25/100;
-		int headerWidth = width*70/100;
-		int headerHeigh = headerWidth*14/100;
-		int marginHeaderTop = heigh*10/100;
-		int marginHeaderLeft = ((width-headerWidth)/2)-sizeBtGeneral;
-		int marginBtPlayTop = heigh*375/1000;
-		int marginBtPlay = marginBtPlayTop-marginHeaderTop-headerHeigh;
-		int marginBtPlayLeft = ((width-sizeBtPlay)/2)-sizeBtGeneral;
+		int height = (int) (display.getHeight());
+		int widthBtExit = width*135/1000;
+		int sizeBtPlay = width*22/100;
+		int headerWidth = width*73/100;
+		int headerHeight = headerWidth*14/100;
+		int marginHeaderTop = height*10/100;
+		int marginHeaderLeft = ((width-headerWidth)/2)-widthBtExit;
+		int marginBtPlayTop = height*39/100;
+		int marginBtPlay = marginBtPlayTop-marginHeaderTop-headerHeight;
+		int marginBtPlayLeft = ((width-sizeBtPlay)/2)-widthBtExit;
+		int widthBtLeft = width*8/100;
+		int widthHelp = width*5/100;
+		int heightBtConf = widthBtLeft*875/1000;
+		int heightBtSound = widthBtLeft*787/1000;
+		int heightBtHelp = heightBtSound;
+		int marginBut = height*4/100;
+		int marginButLeft = height*8/100;
+		int marginLeft = height*325/10000;
+		int marginHelpLeft = height*475/10000;
 		
 		
 		ImageView header = (ImageView) findViewById(R.id.cabeceracuadrados);
-		LayoutParams paramsHeader = new LayoutParams(headerWidth, headerHeigh);
+		LayoutParams paramsHeader = new LayoutParams(headerWidth, headerHeight);
 		paramsHeader.setMargins(marginHeaderLeft, marginHeaderTop, 0, 0);
 		header.setLayoutParams(paramsHeader);
 		
@@ -107,19 +116,22 @@ public class MainActivity extends Activity {
 		btPlay.setLayoutParams(paramsBtPlay);
 		
 		Button btSound = (Button)findViewById(R.id.botonsonido);
-		btSound.setWidth(sizeBtGeneral);
-		btSound.setHeight(sizeBtGeneral);
+		LayoutParams paramsBtSound = new LayoutParams(widthBtLeft, heightBtSound);
+		paramsBtSound.setMargins(marginLeft, 0, 0, marginButLeft);
+		btSound.setLayoutParams(paramsBtSound);
 		
 		Button btConf = (Button)findViewById(R.id.botonconfiguracion);
-		btConf.setWidth(sizeBtGeneral);
-		btConf.setHeight(sizeBtGeneral);
+		LayoutParams paramsBtConf = new LayoutParams(widthBtLeft, heightBtConf);
+		paramsBtConf.setMargins(marginLeft, 0, 0, marginButLeft);
+		btConf.setLayoutParams(paramsBtConf);
 		
 		Button btHelp = (Button)findViewById(R.id.botonayuda);
-		btHelp.setWidth(sizeBtGeneral);
-		btHelp.setHeight(sizeBtGeneral);
+		LayoutParams paramsBtHelp = new LayoutParams(widthHelp, heightBtHelp);
+		paramsBtHelp.setMargins(marginHelpLeft, 0, 0, marginBut);
+		btHelp.setLayoutParams(paramsBtHelp);
 		
 		Button btExit = (Button)findViewById(R.id.botonsalir);	
-		btExit.setWidth(sizeBtGeneral);
-		btExit.setHeight(sizeBtGeneral);
+		btExit.setWidth(widthBtExit);
+		btExit.setHeight(widthBtExit);
 	}
 }
