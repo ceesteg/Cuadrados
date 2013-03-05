@@ -15,33 +15,33 @@ public final class R {
         public static final int configuracion=0x7f020001;
         public static final int consonido=0x7f020002;
         public static final int fondo=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
-        public static final int lineaamarillo=0x7f020005;
-        public static final int lineaazul=0x7f020006;
-        public static final int lineabase=0x7f020007;
-        public static final int linearojo=0x7f020008;
-        public static final int lineaverde=0x7f020009;
-        public static final int lineaverdepng=0x7f02000a;
-        public static final int play=0x7f02000b;
-        public static final int quest=0x7f02000c;
-        public static final int salir=0x7f02000d;
-        public static final int sinsonido=0x7f02000e;
+        public static final int fondo1=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
+        public static final int lineaamarillo=0x7f020006;
+        public static final int lineaazul=0x7f020007;
+        public static final int lineabase=0x7f020008;
+        public static final int linearojo=0x7f020009;
+        public static final int lineaverde=0x7f02000a;
+        public static final int lineaverdepng=0x7f02000b;
+        public static final int play=0x7f02000c;
+        public static final int quest=0x7f02000d;
+        public static final int salir=0x7f02000e;
+        public static final int sinsonido=0x7f02000f;
     }
     public static final class id {
         public static final int LinearLayout1=0x7f080000;
         public static final int botonayuda=0x7f080003;
         public static final int botonconfiguracion=0x7f080001;
-        public static final int botonjugar=0x7f080005;
-        public static final int botonsalir=0x7f080006;
+        public static final int botonjugar=0x7f080004;
+        public static final int botonsalir=0x7f080005;
         public static final int botonsonido=0x7f080002;
-        public static final int cabeceracuadrados=0x7f080004;
-        public static final int menu_settings=0x7f080007;
+        public static final int menu_settings=0x7f080006;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
+        public static final int principal=0x7f030000;
     }
     public static final class menu {
-        public static final int activity_main=0x7f070000;
+        public static final int principal=0x7f070000;
     }
     public static final class raw {
         public static final int sonidofondo=0x7f040000;

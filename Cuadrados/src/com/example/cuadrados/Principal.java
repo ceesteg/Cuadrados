@@ -8,10 +8,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 
-public class MainActivity extends Activity {
+public class Principal extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +19,7 @@ public class MainActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE); 
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
 		WindowManager.LayoutParams.FLAG_FULLSCREEN); 
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.principal);
 		
 		adaptLayout();		
 		
@@ -66,7 +65,7 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_main, menu);
+		getMenuInflater().inflate(R.menu.principal, menu);
 		return true;
 	}
 	
@@ -85,12 +84,7 @@ public class MainActivity extends Activity {
 		int height = (int) (display.getHeight());
 		int widthBtExit = width*135/1000;
 		int sizeBtPlay = width*22/100;
-		int headerWidth = width*73/100;
-		int headerHeight = headerWidth*14/100;
-		int marginHeaderTop = height*10/100;
-		int marginHeaderLeft = ((width-headerWidth)/2)-widthBtExit;
-		int marginBtPlayTop = height*39/100;
-		int marginBtPlay = marginBtPlayTop-marginHeaderTop-headerHeight;
+		int marginBtPlay = height*39/100;;
 		int marginBtPlayLeft = ((width-sizeBtPlay)/2)-widthBtExit;
 		int widthBtLeft = width*8/100;
 		int widthHelp = width*5/100;
@@ -101,12 +95,7 @@ public class MainActivity extends Activity {
 		int marginButLeft = height*8/100;
 		int marginLeft = height*325/10000;
 		int marginHelpLeft = height*475/10000;
-		
-		
-		ImageView header = (ImageView) findViewById(R.id.cabeceracuadrados);
-		LayoutParams paramsHeader = new LayoutParams(headerWidth, headerHeight);
-		paramsHeader.setMargins(marginHeaderLeft, marginHeaderTop, 0, 0);
-		header.setLayoutParams(paramsHeader);
+
 		
 		Button btPlay = (Button)findViewById(R.id.botonjugar);
 		btPlay.setWidth(sizeBtPlay);
