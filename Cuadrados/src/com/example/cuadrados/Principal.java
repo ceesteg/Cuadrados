@@ -2,6 +2,7 @@ package com.example.cuadrados;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Display;
 import android.view.Menu;
 import android.view.View;
@@ -11,7 +12,6 @@ import android.widget.Button;
 import android.widget.LinearLayout.LayoutParams;
 
 public class Principal extends Activity {
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
@@ -28,7 +28,11 @@ public class Principal extends Activity {
 		Button btSound = (Button)findViewById(R.id.botonsonido);
 		
 		if(application.soundImg()){
-			application.startSound(R.raw.sonidofondo);
+			if(application.getPlayer()==null){
+				application.startSound(R.raw.sonidofondo);
+			}else{
+				application.resumeSound();
+			}
 			btSound.setBackgroundResource(R.drawable.consonido);
 		}else{
 			btSound.setBackgroundResource(R.drawable.sinsonido);
@@ -50,7 +54,7 @@ public class Principal extends Activity {
 		    	Cuadrados application = (Cuadrados)getApplicationContext();
 		        Button bt = (Button)findViewById(R.id.botonsonido);
 				if(application.soundImg()){
-					application.pauseSound();
+					application.stopSound();
 					bt.setBackgroundResource(R.drawable.sinsonido);
 					application.setSoundImg(false);
 				} else{
@@ -59,6 +63,16 @@ public class Principal extends Activity {
 				    application.setSoundImg(true);
 				}
 		    }
+		});
+		
+		Button btPlay = (Button)findViewById(R.id.botonjugar);	
+		btPlay.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent inten = new Intent(getApplicationContext(), PantallaPartida.class);
+				startActivity(inten);
+			}
 		});
 	}
 
@@ -71,9 +85,29 @@ public class Principal extends Activity {
 	
 	@Override
 	public void onStop(){
-		Cuadrados application = (Cuadrados)getApplicationContext();
-		application.pauseSound();
 		super.onStop();
+	}
+	
+	@Override
+	public void onResume(){
+		Cuadrados application = (Cuadrados)getApplicationContext();
+		
+		Button btSound = (Button)findViewById(R.id.botonsonido);
+		
+		if(application.soundImg()){
+			application.resumeSound();
+			btSound.setBackgroundResource(R.drawable.consonido);
+		}else{
+			btSound.setBackgroundResource(R.drawable.sinsonido);
+		}
+		super.onResume();
+	}
+	
+	@Override
+	public void onPause(){
+		Cuadrados application = (Cuadrados)getApplicationContext();
+		application.stopSound();
+		super.onPause();
 	}
 
 	@SuppressWarnings("deprecation")
@@ -84,7 +118,7 @@ public class Principal extends Activity {
 		int height = (int) (display.getHeight());
 		int widthBtExit = width*135/1000;
 		int sizeBtPlay = width*22/100;
-		int marginBtPlay = height*39/100;;
+		int marginBtPlay = height*39/100;
 		int marginBtPlayLeft = ((width-sizeBtPlay)/2)-widthBtExit;
 		int widthBtLeft = width*8/100;
 		int widthHelp = width*5/100;

@@ -1,12 +1,21 @@
 package com.example.cuadrados;
 
 import android.app.Application;
+import android.content.Intent;
 import android.media.MediaPlayer;
 
 public class Cuadrados extends Application {
 
-	private MediaPlayer mp;
+	private MediaPlayer player;
 	private boolean sound = true;
+
+	public MediaPlayer getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(int resId) {
+		player = MediaPlayer.create(getApplicationContext(), resId);
+	}
 
 	public boolean soundImg() {
 		return sound;
@@ -17,19 +26,15 @@ public class Cuadrados extends Application {
 	}
 	
 	public void startSound(int resId){
-		mp = MediaPlayer.create((Cuadrados) getApplicationContext(), resId);
-		mp.start();
+		setPlayer(resId);
+		startService(new Intent(getApplicationContext(), ServicioMusica.class));
 	}
 	
 	public void resumeSound(){
-		mp.start();
-	} 
-	
-	public void pauseSound(){
-		mp.pause();
+		startService(new Intent(getApplicationContext(), ServicioMusica.class));
 	}
 	
 	public void stopSound(){
-		mp.stop();
+		stopService(new Intent(getApplicationContext(), ServicioMusica.class));
 	}
 }
