@@ -1,14 +1,20 @@
 package com.example.cuadrados;
 
+import org.apache.http.conn.scheme.PlainSocketFactory;
+
 import android.app.Activity;
+import android.content.pm.LabeledIntent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class PantallaPartida extends Activity {
 	@Override
@@ -61,8 +67,8 @@ public class PantallaPartida extends Activity {
 		int num = 5;
 		
 		int heightTot = height*70/100;
-		int heightLine = heightTot/(196/1000*(num+1) + num);
-		int widthLine = heightLine*196/1000;
+		int heightLine = heightTot/(20/100*(num+1) + num);
+		int widthLine = heightLine*20/100;
 		int sizeLayout = widthLine*(num+1)+heightLine*num;
 		int marginLat = (width-sizeLayout)/2;
 		int marginT = (height-sizeLayout)/2;
@@ -108,7 +114,7 @@ public class PantallaPartida extends Activity {
 			
 			for (int n=1; n<num+1; n++){
 				ImageView ic = new ImageView(getApplicationContext());
-				ic.setImageResource(R.drawable.cuadradobase);
+				ic.setImageResource(R.drawable.cuadradoazul);
 				LayoutParams lpC = new LayoutParams(heightLine, heightLine);
 				lpC.setMargins(0, marginTop, 0, 0);
 				fl1.addView(ic, lpC);
@@ -144,5 +150,16 @@ public class PantallaPartida extends Activity {
 			}
 			fp.addView(fl2);
 		}
+		
+		TextView tv = new TextView(getApplicationContext());
+		tv.setBackgroundColor(Color.GREEN);
+		tv.setText("J1");
+		tv.setTextColor(Color.BLACK);
+		tv.setTextSize(heightLine*50/100);
+		tv.setGravity(Gravity.CENTER);
+		
+		LayoutParams lp2 = new LayoutParams(marginLat, heightLine);
+		lp2.setMargins(0, 0, 0, 0);
+		fp.addView(tv, 0, lp2);
 	}
 }
