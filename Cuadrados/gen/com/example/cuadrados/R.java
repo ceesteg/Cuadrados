@@ -39,14 +39,15 @@ public final class R {
         public static final int sinsonido=0x7f020019;
     }
     public static final class id {
-        public static final int LinearLayout1=0x7f080001;
-        public static final int botonayuda=0x7f080004;
-        public static final int botonconfiguracion=0x7f080002;
-        public static final int botonjugar=0x7f080005;
-        public static final int botonsalir=0x7f080006;
-        public static final int botonsonido=0x7f080003;
+        public static final int LinearLayout1=0x7f080002;
+        public static final int botonayuda=0x7f080005;
+        public static final int botonconfiguracion=0x7f080003;
+        public static final int botonjugar=0x7f080006;
+        public static final int botonsalir=0x7f080007;
+        public static final int botonsalirpartida=0x7f080001;
+        public static final int botonsonido=0x7f080004;
         public static final int fondopartida=0x7f080000;
-        public static final int menu_settings=0x7f080007;
+        public static final int menu_settings=0x7f080008;
     }
     public static final class layout {
         public static final int partida=0x7f030000;

@@ -2,12 +2,15 @@ package com.example.cuadrados;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.Gravity;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
@@ -31,6 +34,16 @@ public class PantallaPartida extends Activity {
 		if(application.soundImg()){
 			application.resumeSound();
 		}
+		
+		Button btSalirPartida = (Button)findViewById(R.id.botonsalirpartida);	
+		btSalirPartida.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				setResult(RESULT_OK);
+				finish();
+			}
+		});
 	}
 	
 	@Override
@@ -149,26 +162,83 @@ public class PantallaPartida extends Activity {
 			fp.addView(fl2);
 		}
 		
+		
+		// Marcadores
+		
 		int marginLatMarcador = marginLat*25/100;
 		int widthMarcador = marginLat*5/10;
+		int heightMarcador = heightLine;
+		int marginBetMarcs = (sizeLayout-heightMarcador*4)/3;
+		int marginRightMarcs = marginLat+sizeLayout+marginLatMarcador;
 		
 		LinearLayout fl2 = new LinearLayout(getApplicationContext());
 		fl2.setOrientation(LinearLayout.VERTICAL);
 		fl2.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 1));
 		
 		TextView tv = new TextView(getApplicationContext());
-		tv.setText("J1");
-		tv.setBackgroundResource(R.drawable.lineabase);
-		tv.setTextColor(Color.BLACK);
+		tv.setText("11");
+		tv.setBackgroundResource(R.drawable.lineaverde);
+		tv.setTextColor(Color.LTGRAY);
 		tv.setTextSize(heightLine*50/100);
 		tv.setGravity(Gravity.CENTER);
 		
-		LayoutParams lp2 = new LayoutParams(widthMarcador, heightLine);
-		lp2.setMargins(marginLatMarcador, marginT, marginLatMarcador, 0);
-		tv.setLayoutParams(lp2);
+		LayoutParams lpMar = new LayoutParams(widthMarcador, heightMarcador);
+		lpMar.setMargins(marginLatMarcador, marginT, marginLatMarcador, 0);
+		tv.setLayoutParams(lpMar);
 		fl2.addView(tv);
+		
+		TextView tv1 = new TextView(getApplicationContext());
+		tv1.setText("5");
+		tv1.setBackgroundResource(R.drawable.linearojo);
+		tv1.setTextColor(Color.LTGRAY);
+		tv1.setTextSize(heightLine*50/100);
+		tv1.setGravity(Gravity.CENTER);
+		
+		LayoutParams lpMar1 = new LayoutParams(widthMarcador, heightMarcador);
+		lpMar1.setMargins(marginLatMarcador, marginBetMarcs, marginLatMarcador, 0);
+		tv1.setLayoutParams(lpMar1);
+		fl2.addView(tv1);
+		
 		
 		fp.addView(fl2);
 		
+		LinearLayout fl3 = new LinearLayout(getApplicationContext());
+		fl3.setOrientation(LinearLayout.VERTICAL);
+		fl3.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 1));
+		
+		TextView tv2 = new TextView(getApplicationContext());
+		tv2.setText("2");
+		tv2.setBackgroundResource(R.drawable.lineaazul);
+		tv2.setTextColor(Color.LTGRAY);
+		tv2.setTextSize(heightLine*50/100);
+		tv2.setGravity(Gravity.CENTER);
+		
+		LayoutParams lpMar2 = new LayoutParams(widthMarcador, heightMarcador);
+		lpMar2.setMargins(marginRightMarcs, marginT, marginLatMarcador, 0);
+		tv2.setLayoutParams(lpMar2);
+		fl3.addView(tv2);
+		
+		TextView tv3 = new TextView(getApplicationContext());
+		tv3.setText("8");
+		tv3.setBackgroundResource(R.drawable.lineaamarillo);
+		tv3.setTextColor(Color.LTGRAY);
+		tv3.setTextSize(heightLine*50/100);
+		tv3.setGravity(Gravity.CENTER);
+		
+		LayoutParams lpMar3 = new LayoutParams(widthMarcador, heightMarcador);
+		lpMar3.setMargins(marginRightMarcs, marginBetMarcs, marginLatMarcador, marginT);
+		tv3.setLayoutParams(lpMar3);
+		fl3.addView(tv3);
+		
+		fp.addView(fl3);
+		
+		
+		// Botón salir partida
+		
+		int widthBtExit = width*135/1000;
+		
+		Button btSalirPartida = (Button)findViewById(R.id.botonsalirpartida);	
+		btSalirPartida.setWidth(widthBtExit);
+		btSalirPartida.setHeight(widthBtExit);
 	}
 }
