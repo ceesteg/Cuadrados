@@ -1,9 +1,7 @@
 package com.example.cuadrados;
 
-import org.apache.http.conn.scheme.PlainSocketFactory;
 
 import android.app.Activity;
-import android.content.pm.LabeledIntent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Display;
@@ -114,7 +112,7 @@ public class PantallaPartida extends Activity {
 			
 			for (int n=1; n<num+1; n++){
 				ImageView ic = new ImageView(getApplicationContext());
-				ic.setImageResource(R.drawable.cuadradoazul);
+				ic.setImageResource(R.drawable.cuadradobase);
 				LayoutParams lpC = new LayoutParams(heightLine, heightLine);
 				lpC.setMargins(0, marginTop, 0, 0);
 				fl1.addView(ic, lpC);
@@ -151,15 +149,26 @@ public class PantallaPartida extends Activity {
 			fp.addView(fl2);
 		}
 		
+		int marginLatMarcador = marginLat*25/100;
+		int widthMarcador = marginLat*5/10;
+		
+		LinearLayout fl2 = new LinearLayout(getApplicationContext());
+		fl2.setOrientation(LinearLayout.VERTICAL);
+		fl2.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 1));
+		
 		TextView tv = new TextView(getApplicationContext());
-		tv.setBackgroundColor(Color.GREEN);
 		tv.setText("J1");
+		tv.setBackgroundResource(R.drawable.lineabase);
 		tv.setTextColor(Color.BLACK);
 		tv.setTextSize(heightLine*50/100);
 		tv.setGravity(Gravity.CENTER);
 		
-		LayoutParams lp2 = new LayoutParams(marginLat, heightLine);
-		lp2.setMargins(0, 0, 0, 0);
-		fp.addView(tv, 0, lp2);
+		LayoutParams lp2 = new LayoutParams(widthMarcador, heightLine);
+		lp2.setMargins(marginLatMarcador, marginT, marginLatMarcador, 0);
+		tv.setLayoutParams(lp2);
+		fl2.addView(tv);
+		
+		fp.addView(fl2);
+		
 	}
 }
