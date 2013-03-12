@@ -28,10 +28,12 @@ public class Tablero {
 
 		cuadrados = new Cuadrado[filas*columnas];
 		
+		j = j*2;
+		
 		//inicizalizar cuadrados...
 		for (int i = 0; i < filas * columnas; i++){
 			int numFila = (i/columnas) + 1;
-			cuadrados[i] = new Cuadrado(i, lineasHorizontales[i], 
+			cuadrados[i] = new Cuadrado(i + j, lineasHorizontales[i], 
 										lineasVerticales[i+numFila-1], 
 										lineasVerticales[i+numFila], 
 										lineasHorizontales[i+columnas]);

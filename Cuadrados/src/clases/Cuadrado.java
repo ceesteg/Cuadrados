@@ -15,6 +15,10 @@ public class Cuadrado {
 		this.l4 = l4;
 	}
 	
+	public int getId() {
+		return id;
+	}
+
 	protected void resetear(){
 		jugador = -1;
 	}

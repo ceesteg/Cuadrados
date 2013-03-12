@@ -6,7 +6,6 @@ import clases.Tablero;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
@@ -38,15 +37,15 @@ public class PantallaPartida extends Activity {
 
 		int num = 5;
 		this.tablero = new Tablero(num, num);
-		
+
 		Jugador j1 = new Jugador(1, "rojo");
 		Jugador j2 = new Jugador(2, "azul");
 		Jugador j3 = new Jugador(3, "verde");
 		Jugador j4 = new Jugador(4, "amarillo");
-		Jugador[] j = {j1, j2, j3, j4};
+		Jugador[] j = { j1, j2, j3, j4 };
 		this.jugadores = j;
 		this.numJugadores = this.jugadores.length;
-		
+
 		adaptLayout(num);
 
 		Cuadrados application = (Cuadrados) getApplicationContext();
@@ -64,7 +63,7 @@ public class PantallaPartida extends Activity {
 				finish();
 			}
 		});
-		
+
 		iniciarPartida();
 	}
 
@@ -117,27 +116,27 @@ public class PantallaPartida extends Activity {
 		fl.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
 				LayoutParams.WRAP_CONTENT, 1));
 
-		ImageView iv3 = new ImageView(getApplicationContext());
-		iv3.setImageResource(R.drawable.lineabase);
-		iv3.setId(this.tablero.getLinea(lineasHorizontales, 0).getId());
+		ImageView lh0 = new ImageView(getApplicationContext());
+		lh0.setImageResource(R.drawable.lineabase);
+		lh0.setId(this.tablero.getLinea(lineasHorizontales, 0).getId());
 		lineasHorizontales++;
-		ponerLinea(iv3, 0);
+		ponerLinea(lh0, 0);
 
-		LayoutParams lp3 = new LayoutParams(heightLine, widthLine);
-		lp3.setMargins(marginLeft, marginTop, 0, 0);
-		fl.addView(iv3, lp3);
+		LayoutParams lplh0 = new LayoutParams(heightLine, widthLine);
+		lplh0.setMargins(marginLeft, marginTop, 0, 0);
+		fl.addView(lh0, lplh0);
 		marginLeft = widthLine;
 
 		for (int i = 1; i < num; i++) {
-			ImageView iv = new ImageView(getApplicationContext());
-			iv.setImageResource(R.drawable.lineabase);
-			iv.setId(this.tablero.getLinea(lineasHorizontales, 0).getId());
+			ImageView lh = new ImageView(getApplicationContext());
+			lh.setImageResource(R.drawable.lineabase);
+			lh.setId(this.tablero.getLinea(lineasHorizontales, 0).getId());
 			lineasHorizontales++;
-			ponerLinea(iv, 0);
+			ponerLinea(lh, 0);
 
-			LayoutParams lp = new LayoutParams(heightLine, widthLine);
-			lp.setMargins(marginLeft, marginTop, 0, 0);
-			fl.addView(iv, lp);
+			LayoutParams lplh = new LayoutParams(heightLine, widthLine);
+			lplh.setMargins(marginLeft, marginTop, 0, 0);
+			fl.addView(lh, lplh);
 		}
 		fp.addView(fl);
 
@@ -150,34 +149,34 @@ public class PantallaPartida extends Activity {
 			fl1.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
 					LayoutParams.WRAP_CONTENT, 1));
 
-			ImageView iv1 = new ImageView(getApplicationContext());
-			iv1.setImageResource(R.drawable.lineabasev);
-			iv3.setId(this.tablero.getLinea(lineasVerticales, 1).getId());
+			ImageView lv1 = new ImageView(getApplicationContext());
+			lv1.setImageResource(R.drawable.lineabasev);
+			lv1.setId(this.tablero.getLinea(lineasVerticales, 1).getId());
 			lineasVerticales++;
-			ponerLinea(iv3, 1);
+			ponerLinea(lv1, 1);
 
-			LayoutParams lp1 = new LayoutParams(widthLine, heightLine);
-			lp1.setMargins(marginLeft, marginTop, 0, 0);
-			fl1.addView(iv1, lp1);
+			LayoutParams lplv1 = new LayoutParams(widthLine, heightLine);
+			lplv1.setMargins(marginLeft, marginTop, 0, 0);
+			fl1.addView(lv1, lplv1);
 
 			for (int n = 1; n < num + 1; n++) {
 				ImageView ic = new ImageView(getApplicationContext());
 				ic.setImageResource(R.drawable.cuadradobase);
-				ic.setId(cuadrados);
+				ic.setId(tablero.getCuadrado(cuadrados).getId());
 				cuadrados++;
 				LayoutParams lpC = new LayoutParams(heightLine, heightLine);
 				lpC.setMargins(0, marginTop, 0, 0);
 				fl1.addView(ic, lpC);
 
-				ImageView iv = new ImageView(getApplicationContext());
-				iv.setImageResource(R.drawable.lineabasev);
-				iv.setId(this.tablero.getLinea(lineasVerticales, 1).getId());
+				ImageView lv = new ImageView(getApplicationContext());
+				lv.setImageResource(R.drawable.lineabasev);
+				lv.setId(this.tablero.getLinea(lineasVerticales, 1).getId());
 				lineasVerticales++;
-				ponerLinea(iv, 1);
+				ponerLinea(lv, 1);
 
-				LayoutParams lp = new LayoutParams(widthLine, heightLine);
-				lp.setMargins(0, marginTop, 0, 0);
-				fl1.addView(iv, lp);
+				LayoutParams lplv = new LayoutParams(widthLine, heightLine);
+				lplv.setMargins(0, marginTop, 0, 0);
+				fl1.addView(lv, lplv);
 			}
 			fp.addView(fl1);
 
@@ -189,27 +188,27 @@ public class PantallaPartida extends Activity {
 			fl2.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
 					LayoutParams.WRAP_CONTENT, 1));
 
-			ImageView iv2 = new ImageView(getApplicationContext());
-			iv2.setImageResource(R.drawable.lineabase);
-			iv2.setId(this.tablero.getLinea(lineasHorizontales, 0).getId());
+			ImageView lh1 = new ImageView(getApplicationContext());
+			lh1.setImageResource(R.drawable.lineabase);
+			lh1.setId(this.tablero.getLinea(lineasHorizontales, 0).getId());
 			lineasHorizontales++;
-			ponerLinea(iv2, 0);
+			ponerLinea(lh1, 0);
 
-			LayoutParams lp2 = new LayoutParams(heightLine, widthLine);
-			lp2.setMargins(marginLeft, marginTop, 0, 0);
-			fl2.addView(iv2, 0, lp2);
+			LayoutParams lplh1 = new LayoutParams(heightLine, widthLine);
+			lplh1.setMargins(marginLeft, marginTop, 0, 0);
+			fl2.addView(lh1, 0, lplh1);
 			marginLeft = widthLine;
 
 			for (int m = 1; m < num; m++) {
-				ImageView iv = new ImageView(getApplicationContext());
-				iv.setImageResource(R.drawable.lineabase);
-				iv.setId(this.tablero.getLinea(lineasHorizontales, 0).getId());
+				ImageView lh = new ImageView(getApplicationContext());
+				lh.setImageResource(R.drawable.lineabase);
+				lh.setId(this.tablero.getLinea(lineasHorizontales, 0).getId());
 				lineasHorizontales++;
-				ponerLinea(iv, 0);
+				ponerLinea(lh, 0);
 
-				LayoutParams lp = new LayoutParams(heightLine, widthLine);
-				lp.setMargins(marginLeft, marginTop, 0, 0);
-				fl2.addView(iv, lp);
+				LayoutParams lplh = new LayoutParams(heightLine, widthLine);
+				lplh.setMargins(marginLeft, marginTop, 0, 0);
+				fl2.addView(lh, lplh);
 			}
 			fp.addView(fl2);
 		}
@@ -226,231 +225,220 @@ public class PantallaPartida extends Activity {
 		fl2.setOrientation(LinearLayout.VERTICAL);
 		fl2.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
 				LayoutParams.WRAP_CONTENT, 1));
-
-		TextView tv = new TextView(getApplicationContext());
-		tv.setText("11");
-		tv.setBackgroundResource(R.drawable.lineaverde);
-		tv.setTextColor(Color.LTGRAY);
-		tv.setTextSize(heightLine * 50 / 100);
-		tv.setGravity(Gravity.CENTER);
-
-		LayoutParams lpMar = new LayoutParams(widthMarcador, heightMarcador);
-		lpMar.setMargins(marginLatMarcador, marginT, marginLatMarcador, 0);
-		tv.setLayoutParams(lpMar);
-		fl2.addView(tv);
-
-		TextView tv1 = new TextView(getApplicationContext());
-		tv1.setText("5");
-		tv1.setBackgroundResource(R.drawable.linearojo);
-		tv1.setTextColor(Color.LTGRAY);
-		tv1.setTextSize(heightLine * 50 / 100);
-		tv1.setGravity(Gravity.CENTER);
-
-		LayoutParams lpMar1 = new LayoutParams(widthMarcador, heightMarcador);
-		lpMar1.setMargins(marginLatMarcador, marginBetMarcs, marginLatMarcador,
-				0);
-		tv1.setLayoutParams(lpMar1);
-		fl2.addView(tv1);
-
-		fp.addView(fl2);
-
 		LinearLayout fl3 = new LinearLayout(getApplicationContext());
 		fl3.setOrientation(LinearLayout.VERTICAL);
 		fl3.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
 				LayoutParams.WRAP_CONTENT, 1));
 
-		TextView tv2 = new TextView(getApplicationContext());
-		tv2.setText("2");
-		tv2.setBackgroundResource(R.drawable.lineaazul);
-		tv2.setTextColor(Color.LTGRAY);
-		tv2.setTextSize(heightLine * 50 / 100);
-		tv2.setGravity(Gravity.CENTER);
-
-		LayoutParams lpMar2 = new LayoutParams(widthMarcador, heightMarcador);
-		lpMar2.setMargins(marginRightMarcs, marginT, marginLatMarcador, 0);
-		tv2.setLayoutParams(lpMar2);
-		fl3.addView(tv2);
-
-		TextView tv3 = new TextView(getApplicationContext());
-		tv3.setText("8");
-		tv3.setBackgroundResource(R.drawable.lineaamarillo);
-		tv3.setTextColor(Color.LTGRAY);
-		tv3.setTextSize(heightLine * 50 / 100);
-		tv3.setGravity(Gravity.CENTER);
-
-		LayoutParams lpMar3 = new LayoutParams(widthMarcador, heightMarcador);
-		lpMar3.setMargins(marginRightMarcs, marginBetMarcs, marginLatMarcador,
-				marginT);
-		tv3.setLayoutParams(lpMar3);
-		fl3.addView(tv3);
-
+		for (int i = 0; i < this.numJugadores; i++) {
+			TextView tv = new TextView(getApplicationContext());
+			tv.setId(this.jugadores[i].getId() * 1111);
+			tv.setText("0");
+			imagenMarcador(tv, this.jugadores[i].getColor());
+			tv.setTextColor(Color.LTGRAY);
+			tv.setTextSize(heightLine * 50 / 100);
+			tv.setGravity(Gravity.CENTER);
+			LayoutParams lpMar = new LayoutParams(widthMarcador, heightMarcador);
+			if (i % 2 == 0) {
+				lpMar.setMargins(marginLatMarcador, marginBetMarcs,
+						marginLatMarcador, 0);
+				tv.setLayoutParams(lpMar);
+				fl2.addView(tv);
+			} else {
+				lpMar.setMargins(marginRightMarcs, marginBetMarcs,
+						marginLatMarcador, 0);
+				tv.setLayoutParams(lpMar);
+				fl3.addView(tv);
+			}
+		}
+		fp.addView(fl2);
 		fp.addView(fl3);
 
+		
 		// Botón salir partida
 
-		int widthBtExit = width * 135 / 1000;
+		int widthBtExit = width / 10;
+		int marginButExit = width * 2 / 100;
+		int marginTopButExit = height - widthBtExit - marginButExit;
+		int marginLeftButExit = width - widthBtExit - marginButExit;
 
 		Button btSalirPartida = (Button) findViewById(R.id.botonsalirpartida);
-		btSalirPartida.setWidth(widthBtExit);
-		btSalirPartida.setHeight(widthBtExit);
+		RelativeLayout.LayoutParams lpBtExit = new RelativeLayout.LayoutParams(widthBtExit, widthBtExit);
+		lpBtExit.setMargins(marginLeftButExit, marginTopButExit, marginButExit, marginButExit);
+		btSalirPartida.setLayoutParams(lpBtExit);
 	}
 
-	private void ponerLinea(ImageView iv, int tipo) {
+	private void ponerLinea(ImageView iv, final int tipo) {
+		iv.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				boolean conseguidoPunto = false;
+				ImageView iv = (ImageView) findViewById(v.getId());
+				int li = v.getId();
+
+				if (tipo == 1) {
+					li = li - 30;
+				}
+
+				if (!tablero.getLinea(li, tipo).estaCompleta()) {
+					String color = jugadores[jugadorActual].getColor();
+
+					cambiarColor(iv, color, tipo);
+
+					tablero.getLinea(li, tipo).completar(jugadorActual);
+
+					int[] cuadradosAfectados = tablero
+							.cuadradosAfectadosPorLinea(li, tipo);
+
+					for (int i = 0; i < cuadradosAfectados.length; i++) {
+						if (tablero.getCuadrado(cuadradosAfectados[i])
+								.estaCompleto()) {
+							tablero.getCuadrado(cuadradosAfectados[i])
+									.completoPor(jugadorActual);
+							ImageView cuad = (ImageView) findViewById(tablero
+									.getCuadrado(cuadradosAfectados[i]).getId());
+							rellenarCuadrado(cuad, color);
+							TextView marc = (TextView) findViewById(jugadores[jugadorActual]
+									.getId() * 1111);
+							sumarUnoMarcador(marc);
+							contador.anotar(jugadorActual);
+							conseguidoPunto = true;
+						}
+					}
+
+					if (!conseguidoPunto)
+						pasaTurno();
+				}
+			}
+		});
+	}
+
+	private void cambiarColor(ImageView iv, String color, int tipo) {
 		if (tipo == 0) {
-			iv.setOnClickListener(new View.OnClickListener() {
-
-				@Override
-				public void onClick(View v) {
-					boolean conseguidoPunto = false;
-					ImageView iv = (ImageView) findViewById(v.getId());
-
-					Log.e("Id linea", String.valueOf(v.getId()));
-					
-					if(!tablero.getLinea(v.getId(), 0).estaCompleta()){
-						String color = jugadores[jugadorActual].getColor();
-						
-						if(color.equals("rojo")){
-							iv.setImageResource(R.drawable.linearojo);
-						} else if(color.equals("azul")){
-							iv.setImageResource(R.drawable.lineaazul);
-						} else if(color.equals("verde")){
-							iv.setImageResource(R.drawable.lineaverde);
-						} else{
-							iv.setImageResource(R.drawable.lineaamarillo);
-						}
-						
-						tablero.getLinea(v.getId(), 0).completar(jugadorActual);
-						
-						int[] cuadradosAfectados = tablero.cuadradosAfectadosPorLinea(v.getId(),  0);
-						
-						for (int i = 0; i < cuadradosAfectados.length; i++){
-							if (tablero.getCuadrado(cuadradosAfectados[i]).estaCompleto()){
-								tablero.getCuadrado(cuadradosAfectados[i]).completoPor(jugadorActual);
-								contador.anotar(jugadorActual);
-								conseguidoPunto = true;
-							}
-						}
-						
-						if (!conseguidoPunto)
-							pasaTurno();
-					}
-				}
-			});
-		} 
-		if (tipo == 1) {
-			iv.setOnClickListener(new View.OnClickListener() {
-
-				@Override
-				public void onClick(View v) {
-					boolean conseguidoPunto = false;
-					ImageView iv = (ImageView) findViewById(v.getId());
-					
-					if(!tablero.getLinea(v.getId(), 1).estaCompleta()){
-						String color = jugadores[jugadorActual].getColor();
-						
-						if(color.equals("rojo")){
-							iv.setImageResource(R.drawable.linearojov);
-						} else if(color.equals("azul")){
-							iv.setImageResource(R.drawable.lineaazulv);
-						} else if(color.equals("verde")){
-							iv.setImageResource(R.drawable.lineaverdev);
-						} else{
-							iv.setImageResource(R.drawable.lineaamarillov);
-						}
-						
-						tablero.getLinea(v.getId(), 1).completar(jugadorActual);
-						
-						int[] cuadradosAfectados = tablero.cuadradosAfectadosPorLinea(v.getId(),  1);
-						
-						for (int i = 0; i < cuadradosAfectados.length; i++){
-							if (tablero.getCuadrado(cuadradosAfectados[i]).estaCompleto()){
-								tablero.getCuadrado(cuadradosAfectados[i]).completoPor(jugadorActual);
-								contador.anotar(jugadorActual);
-								conseguidoPunto = true;
-							}
-						}
-						
-						if (!conseguidoPunto)
-							pasaTurno();
-					}
-				}
-			});
+			if (color.equals("rojo")) {
+				iv.setImageResource(R.drawable.linearojo);
+			} else if (color.equals("azul")) {
+				iv.setImageResource(R.drawable.lineaazul);
+			} else if (color.equals("verde")) {
+				iv.setImageResource(R.drawable.lineaverde);
+			} else {
+				iv.setImageResource(R.drawable.lineaamarillo);
+			}
+		} else {
+			if (color.equals("rojo")) {
+				iv.setImageResource(R.drawable.linearojov);
+			} else if (color.equals("azul")) {
+				iv.setImageResource(R.drawable.lineaazulv);
+			} else if (color.equals("verde")) {
+				iv.setImageResource(R.drawable.lineaverdev);
+			} else {
+				iv.setImageResource(R.drawable.lineaamarillov);
+			}
 		}
 	}
-	
-	
+
+	private void rellenarCuadrado(ImageView iv, String color) {
+		if (color.equals("rojo")) {
+			iv.setImageResource(R.drawable.cuadradorojo);
+		} else if (color.equals("azul")) {
+			iv.setImageResource(R.drawable.cuadradoazul);
+		} else if (color.equals("verde")) {
+			iv.setImageResource(R.drawable.cuadradoverde);
+		} else {
+			iv.setImageResource(R.drawable.cuadradoamarillo);
+		}
+	}
+
+	private void imagenMarcador(TextView tv, String color) {
+		if (color.equals("rojo")) {
+			tv.setBackgroundResource(R.drawable.linearojo);
+		} else if (color.equals("azul")) {
+			tv.setBackgroundResource(R.drawable.lineaazul);
+		} else if (color.equals("verde")) {
+			tv.setBackgroundResource(R.drawable.lineaverde);
+		} else {
+			tv.setBackgroundResource(R.drawable.lineaamarillo);
+		}
+	}
+
+	private void sumarUnoMarcador(TextView tv) {
+		int aux = Integer.parseInt(tv.getText().toString()) + 1;
+		System.out.println(aux);
+		tv.setText(String.valueOf(aux));
+	}
+
 	protected void iniciarPartida() {
 		jugadorActual = 0;
 		contador = new Contador(numJugadores);
-		
-//		while (!partidaAcabada()){
-//			System.out.println("turno jugador " + jugadorActual);
-//			turnoJugador();
-//		}
-//
-//		mostrarPuntuaciones(true);
+
 	}
-	
+
 	protected void pausar() {
 		pausa = true;
 	}
-	
+
 	protected void reanudar() {
 		pausa = false;
 	}
-	
+
 	protected int pasaTurno() {
 		jugadorActual++;
 		if (jugadorActual == numJugadores)
 			jugadorActual = 0;
 		return jugadorActual;
 	}
-	
-	protected boolean partidaAcabada () {
-		for (int i = 0; i < tablero.getNumCuadrados(); i++){
+
+	protected boolean partidaAcabada() {
+		for (int i = 0; i < tablero.getNumCuadrados(); i++) {
 			if (!tablero.getCuadrado(i).estaCompleto())
 				return false;
 		}
 		return true;
 	}
-	
+
 	protected void turnoJugador() {
 		boolean conseguidoPunto = false;
-		
+
 		int[] l = jugadores[jugadorActual].ponerLinea(tablero);
-		
-		while (tablero.getLinea(l[0],  l[1]).estaCompleta()){
+
+		while (tablero.getLinea(l[0], l[1]).estaCompleta()) {
 			l = jugadores[jugadorActual].ponerLinea(tablero);
 		}
-		
-		tablero.getLinea(l[0],  l[1]).completar(jugadorActual);
-		
-		//Aquí hay que mirar si la línea completa algún cuadrado, sólo hay que mirar si hay algún
-		//	cuadrado que toque completo, no podía estar completo antes, ya que le faltaría esta línea.
-		
-		int[] cuadradosAfectados = tablero.cuadradosAfectadosPorLinea(l[0],  l[1]);
-		
-		for (int i = 0; i < cuadradosAfectados.length; i++){
-			if (tablero.getCuadrado(cuadradosAfectados[i]).estaCompleto()){
-				tablero.getCuadrado(cuadradosAfectados[i]).completoPor(jugadorActual);
+
+		tablero.getLinea(l[0], l[1]).completar(jugadorActual);
+
+		// Aquí hay que mirar si la línea completa algún cuadrado, sólo hay que
+		// mirar si hay algún
+		// cuadrado que toque completo, no podía estar completo antes, ya que le
+		// faltaría esta línea.
+
+		int[] cuadradosAfectados = tablero.cuadradosAfectadosPorLinea(l[0],
+				l[1]);
+
+		for (int i = 0; i < cuadradosAfectados.length; i++) {
+			if (tablero.getCuadrado(cuadradosAfectados[i]).estaCompleto()) {
+				tablero.getCuadrado(cuadradosAfectados[i]).completoPor(
+						jugadorActual);
 				contador.anotar(jugadorActual);
 				conseguidoPunto = true;
 			}
 		}
-		
+
 		if (!conseguidoPunto)
 			pasaTurno();
 	}
-	
+
 	public void mostrarPuntuaciones(boolean acabada) {
 		for (int i = 0; i < numJugadores; i++)
-			System.out.println("El jugador " + i + " lleva " + contador.puntuacionJugador(i) + " puntos.");
-		
+			System.out.println("El jugador " + i + " lleva "
+					+ contador.puntuacionJugador(i) + " puntos.");
+
 		if (acabada) {
 			int jugMax = 0;
 			int puntMax = contador.puntuacionJugador(0);
 			boolean empate = false;
-			
+
 			for (int i = 1; i < numJugadores; i++) {
 				if (contador.puntuacionJugador(i) > puntMax) {
 					puntMax = contador.puntuacionJugador(i);
@@ -460,11 +448,12 @@ public class PantallaPartida extends Activity {
 					empate = true;
 				}
 			}
-			
+
 			if (empate)
 				System.out.println("La partida ha acabado en empate.");
-			else 
-				System.out.println("El jugador " + jugMax + " es el ganador con " + puntMax + " puntos.");
+			else
+				System.out.println("El jugador " + jugMax
+						+ " es el ganador con " + puntMax + " puntos.");
 		}
 	}
 }
