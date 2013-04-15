@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo1"
+    android:orientation="horizontal" >
+
+    <Button
+        android:id="@+id/botonAtras"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="5dp"
+        android:layout_weight="2"
+        android:background="@drawable/arrowback" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="12dp"
+        android:layout_weight="16"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/ImageView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/seljugadores"
+            android:contentDescription="@string/app_name" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="4" >
+
+            <Button
+                android:id="@+id/buttonjug1l"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:background="@drawable/arrowleft" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="20" >
+
+                <ImageView
+                    android:id="@+id/ImageView03"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="20"
+                    android:background="@drawable/cuadradoazul"
+                    android:contentDescription="@string/app_name" />
+
+                <ImageView
+                    android:id="@+id/ImageViewjug1"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/app_name" />
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/buttonjug1r"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:background="@drawable/arrowright" />
+
+            <EditText
+                android:id="@+id/EditTextjug1"
+                android:layout_width="77dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:background="@color/WHITE"
+                android:imeOptions="actionDone"
+                android:inputType="textCapCharacters"
+                android:maxLength="3"
+                android:paddingLeft="2dp"
+                android:textColorHint="@color/BLUE"
+                android:textSize="28dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="4" >
+
+            <Button
+                android:id="@+id/buttonjug2l"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:background="@drawable/arrowleft" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="20" >
+
+                <ImageView
+                    android:id="@+id/ImageView04"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="20"
+                    android:background="@drawable/cuadradorojo"
+                    android:contentDescription="@string/app_name" />
+
+                <ImageView
+                    android:id="@+id/ImageViewjug2"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/app_name" />
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/buttonjug2r"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:background="@drawable/arrowright" />
+
+            <EditText
+                android:id="@+id/EditTextjug2"
+                android:layout_width="77dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:background="@color/WHITE"
+                android:imeOptions="actionDone"
+                android:inputType="textCapCharacters"
+                android:maxLength="3"
+                android:paddingLeft="2dp"
+                android:textColorHint="@color/RED"
+                android:textSize="28dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="4" >
+
+            <Button
+                android:id="@+id/buttonjug3l"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:background="@drawable/arrowleft" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="20" >
+
+                <ImageView
+                    android:id="@+id/ImageView05"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="20"
+                    android:background="@drawable/cuadradoverde"
+                    android:contentDescription="@string/app_name" />
+
+                <ImageView
+                    android:id="@+id/ImageViewjug3"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/app_name" />
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/buttonjug3r"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:background="@drawable/arrowright" />
+
+            <EditText
+                android:id="@+id/EditTextjug3"
+                android:layout_width="77dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:background="@color/WHITE"
+                android:imeOptions="actionDone"
+                android:inputType="textCapCharacters"
+                android:maxLength="3"
+                android:paddingLeft="2dp"
+                android:textColorHint="@color/GREEN"
+                android:textSize="28dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="4" >
+
+            <Button
+                android:id="@+id/buttonjug4l"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:background="@drawable/arrowleft" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="20" >
+
+                <ImageView
+                    android:id="@+id/ImageView06"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="20"
+                    android:background="@drawable/cuadradoamarillo"
+                    android:contentDescription="@string/app_name" />
+
+                <ImageView
+                    android:id="@+id/imageViewjug4"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/app_name" />
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/buttonjug4r"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:background="@drawable/arrowright" />
+
+            <EditText
+                android:id="@+id/EditTextjug4"
+                android:layout_width="77dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:background="@color/WHITE"
+                android:imeOptions="actionDone"
+                android:inputType="textCapCharacters"
+                android:maxLength="3"
+                android:paddingLeft="2dp"
+                android:textColorHint="@color/YELLOW"
+                android:textSize="28dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ImageView01"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="28"
+        android:contentDescription="@string/app_name" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="18"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/ImageView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="50"
+            android:background="@drawable/tamtablero"
+            android:contentDescription="@string/app_name" />
+
+        <RadioButton
+            android:id="@+id/radioButton4x4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="18"
+            android:checked="true"
+            android:gravity="fill"
+            android:text="@string/tamanio4x4"
+            android:textColor="@color/WHITE"
+            android:textSize="35dp"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/radioButton5x5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_weight="18"
+            android:text="@string/tamanio5x5"
+            android:textColor="@color/WHITE"
+            android:textSize="35dp"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/radioButton6x6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_weight="18"
+            android:text="@string/tamanio6x6"
+            android:textColor="@color/WHITE"
+            android:textSize="35dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/botonJugarPartida"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+            android:layout_weight="9"
+            android:background="@drawable/play" >
+        </Button>
+    </LinearLayout>
+
+</LinearLayout>

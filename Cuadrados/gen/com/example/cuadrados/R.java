@@ -10,61 +10,122 @@ package com.example.cuadrados;
 public final class R {
     public static final class attr {
     }
+    public static final class color {
+        public static final int BLUE=0x7f060002;
+        public static final int GREEN=0x7f060001;
+        public static final int RED=0x7f060000;
+        public static final int WHITE=0x7f060004;
+        public static final int YELLOW=0x7f060003;
+    }
     public static final class drawable {
-        public static final int cabeceranombre=0x7f020000;
-        public static final int configuracion=0x7f020001;
-        public static final int consonido=0x7f020002;
-        public static final int cuadradoamarillo=0x7f020003;
-        public static final int cuadradoazul=0x7f020004;
-        public static final int cuadradobase=0x7f020005;
-        public static final int cuadradorojo=0x7f020006;
-        public static final int cuadradoverde=0x7f020007;
-        public static final int fondo=0x7f020008;
-        public static final int fondo1=0x7f020009;
-        public static final int fondotablero=0x7f02000a;
-        public static final int ic_launcher=0x7f02000b;
-        public static final int lineaamarillo=0x7f02000c;
-        public static final int lineaamarillov=0x7f02000d;
-        public static final int lineaazul=0x7f02000e;
-        public static final int lineaazulv=0x7f02000f;
-        public static final int lineabase=0x7f020010;
-        public static final int lineabasev=0x7f020011;
-        public static final int linearojo=0x7f020012;
-        public static final int linearojov=0x7f020013;
-        public static final int lineaverde=0x7f020014;
-        public static final int lineaverdev=0x7f020015;
-        public static final int play=0x7f020016;
-        public static final int quest=0x7f020017;
-        public static final int salir=0x7f020018;
-        public static final int sinsonido=0x7f020019;
+        public static final int arrowback=0x7f020000;
+        public static final int arrowleft=0x7f020001;
+        public static final int arrowright=0x7f020002;
+        public static final int avatar00=0x7f020003;
+        public static final int avatar01=0x7f020004;
+        public static final int avatar02=0x7f020005;
+        public static final int avatar03=0x7f020006;
+        public static final int avatar04=0x7f020007;
+        public static final int avatar05=0x7f020008;
+        public static final int avatar06=0x7f020009;
+        public static final int avatar07=0x7f02000a;
+        public static final int avatar08=0x7f02000b;
+        public static final int avatardr=0x7f02000c;
+        public static final int avatarsp=0x7f02000d;
+        public static final int cabeceranombre=0x7f02000e;
+        public static final int configuracion=0x7f02000f;
+        public static final int consonido=0x7f020010;
+        public static final int cuadradoamarillo=0x7f020011;
+        public static final int cuadradoazul=0x7f020012;
+        public static final int cuadradobase=0x7f020013;
+        public static final int cuadradobaseactivo=0x7f020014;
+        public static final int cuadradorojo=0x7f020015;
+        public static final int cuadradoverde=0x7f020016;
+        public static final int fondo=0x7f020017;
+        public static final int fondo1=0x7f020018;
+        public static final int fondotablero=0x7f020019;
+        public static final int ic_launcher=0x7f02001a;
+        public static final int lineaamarillo=0x7f02001b;
+        public static final int lineaamarillov=0x7f02001c;
+        public static final int lineaazul=0x7f02001d;
+        public static final int lineaazulv=0x7f02001e;
+        public static final int lineabase=0x7f02001f;
+        public static final int lineabasev=0x7f020020;
+        public static final int linearojo=0x7f020021;
+        public static final int linearojov=0x7f020022;
+        public static final int lineaverde=0x7f020023;
+        public static final int lineaverdev=0x7f020024;
+        public static final int play=0x7f020025;
+        public static final int quest=0x7f020026;
+        public static final int salir=0x7f020027;
+        public static final int seljugadores=0x7f020028;
+        public static final int sinsonido=0x7f020029;
+        public static final int tamtablero=0x7f02002a;
     }
     public static final class id {
-        public static final int LinearLayout1=0x7f080002;
-        public static final int botonayuda=0x7f080005;
-        public static final int botonconfiguracion=0x7f080003;
-        public static final int botonjugar=0x7f080006;
-        public static final int botonsalir=0x7f080007;
-        public static final int botonsalirpartida=0x7f080001;
-        public static final int botonsonido=0x7f080004;
-        public static final int fondopartida=0x7f080000;
-        public static final int menu_settings=0x7f080008;
+        public static final int EditTextjug1=0x7f090010;
+        public static final int EditTextjug2=0x7f090015;
+        public static final int EditTextjug3=0x7f09001a;
+        public static final int EditTextjug4=0x7f09001f;
+        public static final int ImageView01=0x7f090020;
+        public static final int ImageView03=0x7f09000d;
+        public static final int ImageView04=0x7f090012;
+        public static final int ImageView05=0x7f090017;
+        public static final int ImageView06=0x7f09001c;
+        public static final int ImageView1=0x7f09000b;
+        public static final int ImageView5=0x7f090021;
+        public static final int ImageViewjug1=0x7f09000e;
+        public static final int ImageViewjug2=0x7f090013;
+        public static final int ImageViewjug3=0x7f090018;
+        public static final int LinearLayout1=0x7f090003;
+        public static final int LinearLayout2=0x7f090009;
+        public static final int botonAtras=0x7f09000a;
+        public static final int botonJugarPartida=0x7f090025;
+        public static final int botonayuda=0x7f090006;
+        public static final int botonconfiguracion=0x7f090004;
+        public static final int botonjugar=0x7f090007;
+        public static final int botonsalir=0x7f090008;
+        public static final int botonsalirpartida=0x7f090002;
+        public static final int botonsonido=0x7f090005;
+        public static final int botonsonidopartida=0x7f090001;
+        public static final int buttonjug1l=0x7f09000c;
+        public static final int buttonjug1r=0x7f09000f;
+        public static final int buttonjug2l=0x7f090011;
+        public static final int buttonjug2r=0x7f090014;
+        public static final int buttonjug3l=0x7f090016;
+        public static final int buttonjug3r=0x7f090019;
+        public static final int buttonjug4l=0x7f09001b;
+        public static final int buttonjug4r=0x7f09001e;
+        public static final int fondopartida=0x7f090000;
+        public static final int imageViewjug4=0x7f09001d;
+        public static final int menu_settings=0x7f090026;
+        public static final int radioButton4x4=0x7f090022;
+        public static final int radioButton5x5=0x7f090023;
+        public static final int radioButton6x6=0x7f090024;
     }
     public static final class layout {
         public static final int partida=0x7f030000;
         public static final int principal=0x7f030001;
+        public static final int seleccion=0x7f030002;
     }
     public static final class menu {
-        public static final int principal=0x7f070000;
+        public static final int principal=0x7f080000;
     }
     public static final class raw {
-        public static final int sonidofondo=0x7f040000;
+        public static final int castillo=0x7f040000;
+        public static final int sonidofondo=0x7f040001;
+        public static final int victoria=0x7f040002;
     }
     public static final class string {
         public static final int app_name=0x7f050000;
-        public static final int hello_world=0x7f050001;
-        public static final int imageLogo=0x7f050004;
-        public static final int linea=0x7f050003;
-        public static final int menu_settings=0x7f050002;
+        public static final int imageLogo=0x7f050003;
+        public static final int linea=0x7f050002;
+        public static final int menu_settings=0x7f050001;
+        public static final int seleccion=0x7f050004;
+        public static final int tamanio=0x7f050005;
+        public static final int tamanio4x4=0x7f050006;
+        public static final int tamanio5x5=0x7f050007;
+        public static final int tamanio6x6=0x7f050008;
     }
     public static final class style {
         /** 
@@ -88,10 +149,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f070000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f070001;
     }
 }

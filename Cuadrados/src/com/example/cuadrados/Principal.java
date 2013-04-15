@@ -17,8 +17,7 @@ public class Principal extends Activity {
 		
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE); 
-		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
-		WindowManager.LayoutParams.FLAG_FULLSCREEN); 
+		this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN); 
 		setContentView(R.layout.principal);
 		
 		adaptLayout();		
@@ -50,7 +49,6 @@ public class Principal extends Activity {
 		btSound.setOnClickListener(new View.OnClickListener() {
 		    @Override
 		    public void onClick(View v) {
-		        // TODO Auto-generated method stub
 		    	Cuadrados application = (Cuadrados)getApplicationContext();
 		        Button bt = (Button)findViewById(R.id.botonsonido);
 				if(application.soundImg()){
@@ -70,7 +68,7 @@ public class Principal extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent inten = new Intent(getApplicationContext(), PantallaPartida.class);
+				Intent inten = new Intent(getApplicationContext(), SeleccionJugadores.class);
 				startActivity(inten);
 			}
 		});

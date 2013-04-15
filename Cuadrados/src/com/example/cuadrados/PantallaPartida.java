@@ -1,5 +1,7 @@
 package com.example.cuadrados;
 
+import java.util.ArrayList;
+
 import clases.Contador;
 import clases.Jugador;
 import clases.Tablero;
@@ -17,36 +19,38 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PantallaPartida extends Activity {
 
 	Tablero tablero;
-	Jugador[] jugadores;
+	ArrayList<Jugador> jugadores;
 	Contador contador;
 	int numJugadores;
 	int jugadorActual;
+	int tamanio;
 	boolean pausa;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		this.getWindow().addFlags(
+				WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.partida);
 
-		int num = 5;
-		this.tablero = new Tablero(num, num);
+		this.tamanio = getIntent().getExtras()
+				.getInt("tamanio");
+		this.tablero = new Tablero(this.tamanio, this.tamanio);
 
-		Jugador j1 = new Jugador(1, "rojo");
-		Jugador j2 = new Jugador(2, "azul");
-		Jugador j3 = new Jugador(3, "verde");
-		Jugador j4 = new Jugador(4, "amarillo");
-		Jugador[] j = { j1, j2, j3, j4 };
-		this.jugadores = j;
-		this.numJugadores = this.jugadores.length;
+		ArrayList<Jugador> jugadores = getIntent().getExtras()
+				.getParcelableArrayList("jugadores");
 
-		adaptLayout(num);
+		this.jugadores = jugadores;
+		this.numJugadores = this.jugadores.size();
+
+		adaptLayout(tamanio);
 
 		Cuadrados application = (Cuadrados) getApplicationContext();
 
@@ -100,9 +104,15 @@ public class PantallaPartida extends Activity {
 		int lineasVerticales = 0;
 		int cuadrados = 0;
 
-		int heightTot = height * 70 / 100;
-		int heightLine = heightTot / (20 / 100 * (num + 1) + num);
-		int widthLine = heightLine * 30 / 100;
+		int heightLine = 0;
+		int widthLine = 0;
+		if (num % 2 == 1) {
+			heightLine = height / (((5 * num + 5) / 10) + num);
+			widthLine = heightLine * 5 / 10;
+		} else {
+			heightLine = height / (((6 * num + 6) / 10) + num);
+			widthLine = heightLine * 5 / 10;
+		}
 		int sizeLayout = widthLine * (num + 1) + heightLine * num;
 		int marginLat = (width - sizeLayout) / 2;
 		int marginT = (height - sizeLayout) / 2;
@@ -215,10 +225,10 @@ public class PantallaPartida extends Activity {
 
 		// Marcadores
 
-		int marginLatMarcador = marginLat * 25 / 100;
-		int widthMarcador = marginLat * 5 / 10;
-		int heightMarcador = heightLine;
-		int marginBetMarcs = (sizeLayout - heightMarcador * 4) / 3;
+		int marginLatMarcador = marginLat * 5 / 100;
+		int widthMarcador = marginLat * 9 / 10;
+		int heightMarcador = widthMarcador * 8 / 10;
+		int marginBetMarcs = heightMarcador * 2 / 10;
 		int marginRightMarcs = marginLat + sizeLayout + marginLatMarcador;
 
 		LinearLayout fl2 = new LinearLayout(getApplicationContext());
@@ -231,30 +241,61 @@ public class PantallaPartida extends Activity {
 				LayoutParams.WRAP_CONTENT, 1));
 
 		for (int i = 0; i < this.numJugadores; i++) {
-			TextView tv = new TextView(getApplicationContext());
-			tv.setId(this.jugadores[i].getId() * 1111);
-			tv.setText("0");
-			imagenMarcador(tv, this.jugadores[i].getColor());
-			tv.setTextColor(Color.LTGRAY);
-			tv.setTextSize(heightLine * 50 / 100);
-			tv.setGravity(Gravity.CENTER);
+			LinearLayout marc = new LinearLayout(getApplicationContext());
+			marc.setId((i+1)*11111);
+			marc.setOrientation(LinearLayout.HORIZONTAL);
+			marc.setLayoutParams(new LayoutParams(widthMarcador,
+					heightMarcador, 1));
+			marc.setBackgroundResource(R.drawable.cuadradobase);
+			LinearLayout nameCont = new LinearLayout(getApplicationContext());
+			nameCont.setOrientation(LinearLayout.VERTICAL);
+			nameCont.setLayoutParams(new LayoutParams(
+					widthMarcador/2, heightMarcador, 1));
+
+			TextView cont = new TextView(getApplicationContext());
+			cont.setLayoutParams(new LayoutParams(widthMarcador/2, heightMarcador/2, 1));
+			cont.setId(this.jugadores.get(i).getId() * 1111);
+			cont.setTextSize(2 * heightMarcador / 10);
+			cont.setText("0");
+			cont.setTextColor(Color.BLACK);
+			cont.setGravity(Gravity.CENTER);
+			nameCont.addView(cont);
+
+			TextView name = new TextView(getApplicationContext());
+			name.setLayoutParams(new LayoutParams(widthMarcador/2, heightMarcador/2, 1));
+			name.setText(this.jugadores.get(i).getNombre());
+			name.setTextSize(13 * heightMarcador / 100);
+			labelMarcador(name, this.jugadores.get(i).getColor());
+			name.setGravity(Gravity.CENTER);
+			nameCont.addView(name);
+
+			ImageView avt = new ImageView(getApplicationContext());
+			avt.setLayoutParams(new LayoutParams(widthMarcador / 2,
+					heightMarcador));
+			avt.setBackgroundResource(this.jugadores.get(i).getAvatar());
+
 			LayoutParams lpMar = new LayoutParams(widthMarcador, heightMarcador);
 			if (i % 2 == 0) {
 				lpMar.setMargins(marginLatMarcador, marginBetMarcs,
 						marginLatMarcador, 0);
-				tv.setLayoutParams(lpMar);
-				fl2.addView(tv);
+				marc.setLayoutParams(lpMar);
+
+				marc.addView(nameCont);
+				marc.addView(avt);
+				fl2.addView(marc);
 			} else {
 				lpMar.setMargins(marginRightMarcs, marginBetMarcs,
 						marginLatMarcador, 0);
-				tv.setLayoutParams(lpMar);
-				fl3.addView(tv);
+				marc.setLayoutParams(lpMar);
+
+				marc.addView(avt);
+				marc.addView(nameCont);
+				fl3.addView(marc);
 			}
 		}
 		fp.addView(fl2);
 		fp.addView(fl3);
 
-		
 		// Botón salir partida
 
 		int widthBtExit = width / 10;
@@ -263,9 +304,54 @@ public class PantallaPartida extends Activity {
 		int marginLeftButExit = width - widthBtExit - marginButExit;
 
 		Button btSalirPartida = (Button) findViewById(R.id.botonsalirpartida);
-		RelativeLayout.LayoutParams lpBtExit = new RelativeLayout.LayoutParams(widthBtExit, widthBtExit);
-		lpBtExit.setMargins(marginLeftButExit, marginTopButExit, marginButExit, marginButExit);
+		RelativeLayout.LayoutParams lpBtExit = new RelativeLayout.LayoutParams(
+				widthBtExit, widthBtExit);
+		lpBtExit.setMargins(marginLeftButExit, marginTopButExit, marginButExit,
+				marginButExit);
 		btSalirPartida.setLayoutParams(lpBtExit);
+
+		// Botón sonido partida
+
+		int widthBtSonido = 7 * widthBtExit / 10;
+		int marginButSonido = width * 2 / 100;
+		int marginTopButSonido = marginTopButExit;
+
+		Cuadrados application = (Cuadrados) getApplicationContext();
+
+		Button btSonidoPartida = (Button) findViewById(R.id.botonsonidopartida);
+		RelativeLayout.LayoutParams lpBtSonido = new RelativeLayout.LayoutParams(
+				widthBtSonido, widthBtSonido);
+		lpBtSonido.setMargins(marginButSonido, marginTopButSonido,
+				marginButSonido, marginButSonido);
+		btSonidoPartida.setLayoutParams(lpBtSonido);
+
+		if (application.soundImg()) {
+			if (application.getPlayer() == null) {
+				application.startSound(R.raw.sonidofondo);
+			} else {
+				application.resumeSound();
+			}
+			btSonidoPartida.setBackgroundResource(R.drawable.consonido);
+		} else {
+			btSonidoPartida.setBackgroundResource(R.drawable.sinsonido);
+		}
+
+		btSonidoPartida.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Cuadrados application = (Cuadrados) getApplicationContext();
+				Button bt = (Button) findViewById(R.id.botonsonidopartida);
+				if (application.soundImg()) {
+					application.stopSound();
+					bt.setBackgroundResource(R.drawable.sinsonido);
+					application.setSoundImg(false);
+				} else {
+					application.resumeSound();
+					bt.setBackgroundResource(R.drawable.consonido);
+					application.setSoundImg(true);
+				}
+			}
+		});
 	}
 
 	private void ponerLinea(ImageView iv, final int tipo) {
@@ -278,11 +364,11 @@ public class PantallaPartida extends Activity {
 				int li = v.getId();
 
 				if (tipo == 1) {
-					li = li - 30;
+					li = li - tamanio * (tamanio + 1);
 				}
 
 				if (!tablero.getLinea(li, tipo).estaCompleta()) {
-					String color = jugadores[jugadorActual].getColor();
+					String color = jugadores.get(jugadorActual).getColor();
 
 					cambiarColor(iv, color, tipo);
 
@@ -299,16 +385,46 @@ public class PantallaPartida extends Activity {
 							ImageView cuad = (ImageView) findViewById(tablero
 									.getCuadrado(cuadradosAfectados[i]).getId());
 							rellenarCuadrado(cuad, color);
-							TextView marc = (TextView) findViewById(jugadores[jugadorActual]
-									.getId() * 1111);
+							TextView marc = (TextView) findViewById(jugadores
+									.get(jugadorActual).getId() * 1111);
 							sumarUnoMarcador(marc);
 							contador.anotar(jugadorActual);
 							conseguidoPunto = true;
 						}
 					}
+					if (!partidaAcabada()) {
+						if (!conseguidoPunto)
+							pasaTurno();
+					} else {
+						
+						int jugMax = 0;
+						int puntMax = contador.puntuacionJugador(0);
+						boolean empate = false;
 
-					if (!conseguidoPunto)
-						pasaTurno();
+						for (int i = 1; i < numJugadores; i++) {
+							if (contador.puntuacionJugador(i) > puntMax) {
+								puntMax = contador.puntuacionJugador(i);
+								jugMax = i;
+								empate = false;
+							} else if (contador.puntuacionJugador(i) == puntMax) {
+								empate = true;
+							}
+						}
+
+						Toast toast1 = null;
+								
+						if (empate){
+							toast1 = Toast.makeText(getApplicationContext(),
+									"La partida ha acabado en empate.", Toast.LENGTH_SHORT);
+						}else{
+							toast1 = Toast.makeText(getApplicationContext(),
+									"El jugador " + jugadores.get(jugMax).getNombre()
+									+ " es el ganador con " + puntMax
+									+ " puntos.", Toast.LENGTH_SHORT);
+
+						}
+						toast1.show();
+					}
 				}
 			}
 		});
@@ -350,15 +466,15 @@ public class PantallaPartida extends Activity {
 		}
 	}
 
-	private void imagenMarcador(TextView tv, String color) {
+	private void labelMarcador(TextView tv, String color) {
 		if (color.equals("rojo")) {
-			tv.setBackgroundResource(R.drawable.linearojo);
+			tv.setTextColor(Color.RED);
 		} else if (color.equals("azul")) {
-			tv.setBackgroundResource(R.drawable.lineaazul);
+			tv.setTextColor(Color.BLUE);
 		} else if (color.equals("verde")) {
-			tv.setBackgroundResource(R.drawable.lineaverde);
+			tv.setTextColor(Color.rgb(19, 148, 16));
 		} else {
-			tv.setBackgroundResource(R.drawable.lineaamarillo);
+			tv.setTextColor(Color.YELLOW);
 		}
 	}
 
@@ -370,6 +486,8 @@ public class PantallaPartida extends Activity {
 
 	protected void iniciarPartida() {
 		jugadorActual = 0;
+		LinearLayout marc = (LinearLayout) findViewById((jugadorActual+1)*11111);
+		marc.setBackgroundResource(R.drawable.cuadradobaseactivo);
 		contador = new Contador(numJugadores);
 
 	}
@@ -386,6 +504,18 @@ public class PantallaPartida extends Activity {
 		jugadorActual++;
 		if (jugadorActual == numJugadores)
 			jugadorActual = 0;
+		
+		int jugAnterior = jugadorActual-1;
+		
+		if(jugadorActual==0){
+			jugAnterior = numJugadores-1;
+		}
+		LinearLayout marc = (LinearLayout) findViewById((jugadorActual+1)*11111);
+		marc.setBackgroundResource(R.drawable.cuadradobaseactivo);
+		
+		LinearLayout ant = (LinearLayout) findViewById((jugAnterior+1)*11111);
+		ant.setBackgroundResource(R.drawable.cuadradobase);
+		
 		return jugadorActual;
 	}
 
@@ -400,10 +530,10 @@ public class PantallaPartida extends Activity {
 	protected void turnoJugador() {
 		boolean conseguidoPunto = false;
 
-		int[] l = jugadores[jugadorActual].ponerLinea(tablero);
+		int[] l = jugadores.get(jugadorActual).ponerLinea(tablero);
 
 		while (tablero.getLinea(l[0], l[1]).estaCompleta()) {
-			l = jugadores[jugadorActual].ponerLinea(tablero);
+			l = jugadores.get(jugadorActual).ponerLinea(tablero);
 		}
 
 		tablero.getLinea(l[0], l[1]).completar(jugadorActual);

@@ -24,6 +24,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".SeleccionJugadores"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
             android:name=".PantallaPartida"
             android:screenOrientation="landscape" >
         </activity>
