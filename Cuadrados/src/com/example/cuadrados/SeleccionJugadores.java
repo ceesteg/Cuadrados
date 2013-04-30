@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.Toast;
 
 public class SeleccionJugadores extends Activity {
 
@@ -372,59 +371,57 @@ public class SeleccionJugadores extends Activity {
 				
 				int i = 1;
 				Jugador j = null;
-				boolean msg = false;
+				String text = "";
 				
 				EditText et1 = (EditText) findViewById(R.id.EditTextjug1);
 				if(et1.isEnabled()){
-					if(et1.getText().toString().equals("")){
-						msg = true;
+					if(et1.getText().toString().trim().equals("")){
+						text = "PJ"+i;
 					}else{
-						j = new Jugador(i, "azul", et1.getText().toString(), avatares[avatar1]);
-						jugadores.add(j);
-						i++;
+						text = et1.getText().toString();
 					}
+					j = new Jugador(i, "azul", text, avatares[avatar1]);
+					jugadores.add(j);
+					i++;
 				}
 				EditText et2 = (EditText) findViewById(R.id.EditTextjug2);
 				if(et2.isEnabled()){
-					if(et2.getText().toString().equals("")){
-						msg = true;
+					if(et2.getText().toString().trim().equals("")){
+						text = "PJ"+i;
 					}else{
-						j = new Jugador(i, "rojo", et2.getText().toString(), avatares[avatar2]);
-						jugadores.add(j);
-						i++;
+						text = et2.getText().toString();
 					}
+					j = new Jugador(i, "rojo", text, avatares[avatar2]);
+					jugadores.add(j);
+					i++;
 				}
 				EditText et3 = (EditText) findViewById(R.id.EditTextjug3);
 				if(et3.isEnabled()){
-					if(et3.getText().toString().equals("")){
-						msg = true;
+					if(et3.getText().toString().trim().equals("")){
+						text = "PJ"+i;
 					}else{
-						j = new Jugador(i, "verde", et3.getText().toString(), avatares[avatar3]);
-						jugadores.add(j);
-						i++;
+						text = et3.getText().toString();
 					}
+					j = new Jugador(i, "verde", text, avatares[avatar3]);
+					jugadores.add(j);
+					i++;
 				}
 				EditText et4 = (EditText) findViewById(R.id.EditTextjug4);
 				if(et4.isEnabled()){
-					if(et4.getText().toString().equals("")){
-						msg = true;
+					if(et4.getText().toString().trim().equals("")){
+						text = "PJ"+i;
 					}else{
-						j = new Jugador(i, "amarillo", et4.getText().toString(), avatares[avatar4]);
-						jugadores.add(j);
-						i++;
+						text = et4.getText().toString();
 					}
+					j = new Jugador(i, "amarillo", text, avatares[avatar4]);
+					jugadores.add(j);
+					i++;
 				}
 				
-				if(msg){
-					Toast toast = Toast.makeText(getApplicationContext(),
-							"Los jugadores deben tener un nombre.", Toast.LENGTH_SHORT);
-					toast.show();
-				}else{
-					inten.putParcelableArrayListExtra("jugadores", jugadores);
-					inten.putExtra("tamanio", rButSel);
-					startActivity(inten);
-					finish();
-				}
+				inten.putParcelableArrayListExtra("jugadores", jugadores);
+				inten.putExtra("tamanio", rButSel);
+				startActivity(inten);
+				finish();
 			}
 		});
 		

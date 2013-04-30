@@ -6,7 +6,9 @@ import clases.Contador;
 import clases.Jugador;
 import clases.Tablero;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.Gravity;
@@ -19,7 +21,6 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class PantallaPartida extends Activity {
 
@@ -265,7 +266,7 @@ public class PantallaPartida extends Activity {
 			name.setLayoutParams(new LayoutParams(widthMarcador/2, heightMarcador/2, 1));
 			name.setText(this.jugadores.get(i).getNombre());
 			name.setTextSize(13 * heightMarcador / 100);
-			labelMarcador(name, this.jugadores.get(i).getColor());
+			name.setTextColor(Color.BLACK);
 			name.setGravity(Gravity.CENTER);
 			nameCont.addView(name);
 
@@ -357,6 +358,7 @@ public class PantallaPartida extends Activity {
 	private void ponerLinea(ImageView iv, final int tipo) {
 		iv.setOnClickListener(new View.OnClickListener() {
 
+			@SuppressWarnings("deprecation")
 			@Override
 			public void onClick(View v) {
 				boolean conseguidoPunto = false;
@@ -409,21 +411,110 @@ public class PantallaPartida extends Activity {
 							} else if (contador.puntuacionJugador(i) == puntMax) {
 								empate = true;
 							}
-						}
+						}						
 
-						Toast toast1 = null;
-								
+						RelativeLayout fp = (RelativeLayout) findViewById(R.id.fondopartida);
+						Display display = getWindowManager().getDefaultDisplay();
+						int width = (int) (display.getWidth());
+						int height = (int) (display.getHeight());
+						
+						int btS = height/5;
+						int btMl2 = btS*5/2;
+						int btMt = height*2/3;
+						int btMl1 = width-btS-btS-btMl2-btMl2;
+						
+						LinearLayout winBack = new LinearLayout(getApplicationContext());
+						winBack.setOrientation(LinearLayout.VERTICAL);
+						winBack.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
+								LayoutParams.MATCH_PARENT));
+						winBack.setBackgroundResource(R.drawable.fondofin);
+						
+						LinearLayout txts = new LinearLayout(getApplicationContext());
+						txts.setOrientation(LinearLayout.VERTICAL);
+						txts.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, btMt));
+
+						TextView tit = new TextView(getApplicationContext());
 						if (empate){
-							toast1 = Toast.makeText(getApplicationContext(),
-									"La partida ha acabado en empate.", Toast.LENGTH_SHORT);
+							tit.setText(getString(R.string.empate1)+" "+puntMax+" "+getString(R.string.puntos));
 						}else{
-							toast1 = Toast.makeText(getApplicationContext(),
-									"El jugador " + jugadores.get(jugMax).getNombre()
-									+ " es el ganador con " + puntMax
-									+ " puntos.", Toast.LENGTH_SHORT);
-
+							tit.setText(getString(R.string.ganador1)+" "+jugadores.get(jugMax).getNombre()+" "+
+									getString(R.string.ganador2)+" "+puntMax+" "+getString(R.string.puntos));
 						}
-						toast1.show();
+						tit.setTextSize(height * 5 / 100);
+						tit.setTextColor(Color.BLACK);
+						tit.setGravity(Gravity.CENTER);
+						tit.setTypeface(null, Typeface.BOLD);
+						LayoutParams titL = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+						titL.setMargins(7*width/100, 1*height/10, 7*width/100, 0);
+						txts.addView(tit, titL);
+						
+						TextView tit2 = new TextView(getApplicationContext());
+						tit2.setText(R.string.jugardenuevo);
+						tit2.setTextSize(height * 5 / 100);
+						tit2.setTextColor(Color.BLACK);
+						tit2.setGravity(Gravity.CENTER);
+						tit2.setTypeface(null, Typeface.BOLD);
+						LayoutParams tit2L = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+						tit2L.setMargins(7*width/100, 15*height/100, 7*width/100, 0);
+						txts.addView(tit2, tit2L);
+						
+						winBack.addView(txts);
+						
+						LinearLayout buts = new LinearLayout(getApplicationContext());
+						buts.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, height-btMt));
+						
+						Button btSi = new Button(getApplicationContext());
+						btSi.setBackgroundResource(R.drawable.accepted);
+						LayoutParams lpbS = new LayoutParams(btS, btS);
+						lpbS.setMargins(btMl2, 0, 0, 0);
+						buts.addView(btSi, lpbS);
+						
+						btSi.setOnClickListener(new View.OnClickListener() {
+
+							@Override
+							public void onClick(View v) {
+								Intent inten = new Intent(getApplicationContext(),
+										PantallaPartida.class);
+								inten.putParcelableArrayListExtra("jugadores", jugadores);
+								inten.putExtra("tamanio", tamanio);
+								startActivity(inten);
+								finish();
+							}
+						});						
+							
+						Button btNo = new Button(getApplicationContext());
+						btNo.setBackgroundResource(R.drawable.cancel);
+						LayoutParams lpbN = new LayoutParams(btS, btS);
+						lpbN.setMargins(btMl1, 0, btS, 0);
+						buts.addView(btNo, lpbN);
+						
+						btNo.setOnClickListener(new View.OnClickListener() {
+
+							@Override
+							public void onClick(View v) {
+								setResult(RESULT_OK);
+								finish();
+							}
+						});
+						
+						winBack.addView(buts);
+						fp.addView(winBack);
+						
+						Button btSalirPartida = (Button) findViewById(R.id.botonsalirpartida);
+						btSalirPartida.setOnClickListener(new View.OnClickListener() {
+
+							@Override
+							public void onClick(View v) {
+							}
+						});
+						
+						Button btSonidoPartida = (Button) findViewById(R.id.botonsonidopartida);
+						btSonidoPartida.setOnClickListener(new View.OnClickListener() {
+
+							@Override
+							public void onClick(View v) {
+							}
+						});
 					}
 				}
 			}
@@ -466,15 +557,15 @@ public class PantallaPartida extends Activity {
 		}
 	}
 
-	private void labelMarcador(TextView tv, String color) {
+	private void fondoActivo(LinearLayout ll, String color) {
 		if (color.equals("rojo")) {
-			tv.setTextColor(Color.RED);
+			ll.setBackgroundResource(R.drawable.cuadradorojoactivo);
 		} else if (color.equals("azul")) {
-			tv.setTextColor(Color.BLUE);
+			ll.setBackgroundResource(R.drawable.cuadradoazulactivo);
 		} else if (color.equals("verde")) {
-			tv.setTextColor(Color.rgb(19, 148, 16));
+			ll.setBackgroundResource(R.drawable.cuadradoverdeactivo);
 		} else {
-			tv.setTextColor(Color.YELLOW);
+			ll.setBackgroundResource(R.drawable.cuadradoamarilloactivo);
 		}
 	}
 
@@ -487,7 +578,7 @@ public class PantallaPartida extends Activity {
 	protected void iniciarPartida() {
 		jugadorActual = 0;
 		LinearLayout marc = (LinearLayout) findViewById((jugadorActual+1)*11111);
-		marc.setBackgroundResource(R.drawable.cuadradobaseactivo);
+		fondoActivo(marc, jugadores.get(jugadorActual).getColor());
 		contador = new Contador(numJugadores);
 
 	}
@@ -511,7 +602,7 @@ public class PantallaPartida extends Activity {
 			jugAnterior = numJugadores-1;
 		}
 		LinearLayout marc = (LinearLayout) findViewById((jugadorActual+1)*11111);
-		marc.setBackgroundResource(R.drawable.cuadradobaseactivo);
+		fondoActivo(marc, jugadores.get(jugadorActual).getColor());
 		
 		LinearLayout ant = (LinearLayout) findViewById((jugAnterior+1)*11111);
 		ant.setBackgroundResource(R.drawable.cuadradobase);

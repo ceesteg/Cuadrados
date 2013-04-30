@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <string name="app_name">Cuadrados</string>
@@ -15,4 +14,9 @@
 	<string name="tamanio4x4">4x4</string>
 	<string name="tamanio5x5">5x5</string>
 	<string name="tamanio6x6">6x6</string>
+	<string name="empate1">LA PARTIDA HA TERMINADO EN EMPATE A</string>
+	<string name="ganador1">EL JUGADOR</string>
+	<string name="ganador2">HA GANADO CON</string>
+	<string name="puntos">PUNTOS.</string>
+	<string name="jugardenuevo">¿JUGAR DE NUEVO?</string>
 </resources>

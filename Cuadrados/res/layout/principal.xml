@@ -18,13 +18,6 @@
         android:orientation="vertical" >
 
         <Button
-            android:id="@+id/botonconfiguracion"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center_vertical|center"
-            android:background="@drawable/configuracion" />
-
-        <Button
             android:id="@+id/botonsonido"
             android:layout_width="50dp"
             android:layout_height="50dp"

@@ -120,7 +120,6 @@ public class Principal extends Activity {
 		int marginBtPlayLeft = ((width-sizeBtPlay)/2)-widthBtExit;
 		int widthBtLeft = width*8/100;
 		int widthHelp = width*5/100;
-		int heightBtConf = widthBtLeft*875/1000;
 		int heightBtSound = widthBtLeft*787/1000;
 		int heightBtHelp = heightBtSound;
 		int marginBut = height*4/100;
@@ -140,11 +139,6 @@ public class Principal extends Activity {
 		LayoutParams paramsBtSound = new LayoutParams(widthBtLeft, heightBtSound);
 		paramsBtSound.setMargins(marginLeft, 0, 0, marginButLeft);
 		btSound.setLayoutParams(paramsBtSound);
-		
-		Button btConf = (Button)findViewById(R.id.botonconfiguracion);
-		LayoutParams paramsBtConf = new LayoutParams(widthBtLeft, heightBtConf);
-		paramsBtConf.setMargins(marginLeft, 0, 0, marginButLeft);
-		btConf.setLayoutParams(paramsBtConf);
 		
 		Button btHelp = (Button)findViewById(R.id.botonayuda);
 		LayoutParams paramsBtHelp = new LayoutParams(widthHelp, heightBtHelp);
