@@ -31,6 +31,10 @@
             android:name=".PantallaPartida"
             android:screenOrientation="landscape" >
         </activity>
+        <activity
+            android:name=".Ayuda"
+            android:screenOrientation="landscape" >
+        </activity>
         <service android:enabled="true" android:name=".ServicioMusica" />
     </application>
 

@@ -72,6 +72,16 @@ public class Principal extends Activity {
 				startActivity(inten);
 			}
 		});
+		
+		Button btAyuda = (Button)findViewById(R.id.botonayuda);	
+		btAyuda.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent inten = new Intent(getApplicationContext(), Ayuda.class);
+				startActivity(inten);
+			}
+		});
 	}
 
 	@Override

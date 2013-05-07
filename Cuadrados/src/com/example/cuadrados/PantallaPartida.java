@@ -419,7 +419,7 @@ public class PantallaPartida extends Activity {
 						int height = (int) (display.getHeight());
 						
 						int btS = height/5;
-						int btMl2 = btS*5/2;
+						int btMl2 = width*333/1000;
 						int btMt = height*2/3;
 						int btMl1 = width-btS-btS-btMl2-btMl2;
 						
